@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>Success</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+        <script>
+            // Fonction pour lancer des confettis à une position spécifique
+            function launchConfettiAt(position, delay) {
+                setTimeout(() => {
+                    const confettiInstance = confetti.create(null, {
+                        resize: true,
+                    });
+
+                    confettiInstance({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: position, // Définir la position des confettis
+                        colors: [
+                            '#FFC107',
+                            '#03A9F4',
+                            '#4CAF50',
+                            '#E91E63',
+                            '#FF9800',
+                        ],
+                    });
+                }, delay);
+            }
+
+            // Fonction principale
+            document.addEventListener('DOMContentLoaded', () => {
+                // Exemple : Lancer des confettis à différents endroits et moments
+                const positionsAndDelays = [
+                    // Phase tranquille
+                    { position: { x: 0.2, y: 0.5 }, delay: 0 },
+                    { position: { x: 0.5, y: 0.3 }, delay: 500 },
+                    { position: { x: 0.8, y: 0.5 }, delay: 1000 },
+                    { position: { x: 0.5, y: 0.8 }, delay: 1500 },
+                    { position: { x: 0.3, y: 0.4 }, delay: 2000 },
+                    { position: { x: 0.7, y: 0.6 }, delay: 2500 },
+                    { position: { x: 0.4, y: 0.7 }, delay: 3000 },
+                    { position: { x: 0.6, y: 0.3 }, delay: 3500 },
+                    { position: { x: 0.5, y: 0.5 }, delay: 4000 },
+                    { position: { x: 0.2, y: 0.3 }, delay: 4500 },
+                    { position: { x: 0.8, y: 0.7 }, delay: 5000 },
+                    { position: { x: 0.4, y: 0.2 }, delay: 5500 },
+                    // Intensification
+                    { position: { x: 0.1, y: 0.6 }, delay: 6000 },
+                    { position: { x: 0.9, y: 0.4 }, delay: 6500 },
+                    { position: { x: 0.3, y: 0.8 }, delay: 7000 },
+                    { position: { x: 0.7, y: 0.2 }, delay: 7500 },
+                    { position: { x: 0.4, y: 0.6 }, delay: 8000 },
+                    { position: { x: 0.6, y: 0.4 }, delay: 8500 },
+                    { position: { x: 0.5, y: 0.5 }, delay: 9000 },
+                    // Bouquet final
+                    { position: { x: 0.3, y: 0.3 }, delay: 9500 },
+                    { position: { x: 0.7, y: 0.7 }, delay: 9500 },
+                    { position: { x: 0.2, y: 0.8 }, delay: 9500 },
+                    { position: { x: 0.8, y: 0.2 }, delay: 9500 },
+                    { position: { x: 0.5, y: 0.5 }, delay: 9500 },
+                ];
+
+                positionsAndDelays.forEach(({ position, delay }) => {
+                    launchConfettiAt(position, delay);
+                });
+
+                setTimeout(launchFinale, 4000);
+            });
+        </script>
+    </head>
+    <body class="h-screen w-full">
+        <a
+            class="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            href="/"
+        >
+            <img src="/images/MeowGram.png" class="max-w-sm mx-auto" />
+        </a>
+        <section
+            class="flex justify-center h-screen dark:bg-gray-50 dark:text-gray-800"
+        >
+            <div
+                class="container flex flex-col items-center justify-center px-5 mx-auto my-8"
+            >
+                <div class="max-w-md text-center">
+                    <iframe
+                        src="https://giphy.com/embed/MDJ9IbxxvDUQM"
+                        width="480"
+                        height="269"
+                        frameborder="0"
+                        class="giphy-embed"
+                        allowfullscreen
+                    ></iframe>
+                    <p class="text-2xl font-semibold md:text-3xl my-8">
+                        {{message}}
+                    </p>
+                    <a
+                        id="trigger-confetti"
+                        href="/auth/login"
+                        class="px-8 py-3 font-semibold rounded bg-blue-600 dark:text-gray-50"
+                        >Veuillez vous connecter non d'une pipe</a
+                    >
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
